@@ -21,13 +21,6 @@ namespace Govision
         public static Result LastScanResult;
         public static Action<Result> FinishedAction;
 
-        /*public static event Action<bool> OnRequestTorch;
-        public static event Action OnRequestToggleTorch;
-        public static event Action OnRequestAutoFocus;
-        public static event Action OnRequestCancel;
-        public static event Func<bool> OnRequestIsTorchOn;
-        public static event Func<bool> OnRequestCanTorch;*/
-
         public start()
         {
             InitializeComponent();
@@ -38,89 +31,6 @@ namespace Govision
             };
         }
 
-        #region Requests 
-        /*
-        public static bool RequestIsTorchOn()
-        {
-            var evt = OnRequestIsTorchOn;
-            return evt != null && evt();
-        }
-
-        public static bool RequestCanTorch()
-        {
-            var evt = OnRequestCanTorch;
-            return evt != null && evt();
-        }
-
-        public static void RequestTorch(bool on)
-        {
-            var evt = OnRequestTorch;
-            if (evt != null)
-                evt(on);
-        }
-
-        public static void RequestToggleTorch()
-        {
-            var evt = OnRequestToggleTorch;
-            if (evt != null)
-                evt();
-        }
-
-        public static void RequestAutoFocus()
-        {
-            var evt = OnRequestAutoFocus;
-            if (evt != null)
-                evt();
-        }
-
-        public static void RequestCancel()
-        {
-            var evt = OnRequestCancel;
-            if (evt != null)
-                evt();
-        }
-
-        void RequestAutoFocusHandler()
-        {
-            if (scannerControl != null)
-                scannerControl.AutoFocus();
-        }
-
-        void RequestTorchHandler(bool on)
-        {
-            if (scannerControl != null)
-                scannerControl.Torch(on);
-        }
-
-        void RequestToggleTorchHandler()
-        {
-            if (scannerControl != null)
-                scannerControl.ToggleTorch();
-        }
-
-        void RequestCancelHandler()
-        {
-            if (scannerControl != null)
-                scannerControl.Cancel();
-        }
-
-        bool RequestIsTorchOnHandler()
-        {
-            if (scannerControl != null)
-                return scannerControl.IsTorchOn;
-
-            return false;
-        }
-
-        bool RequestCanTorchHandler()
-        {
-            if (scannerControl != null)
-                return scannerControl.CanTorch;
-
-            return false;
-        }
-        */
-        #endregion
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -132,12 +42,6 @@ namespace Govision
         {
             try
             {
-                /*OnRequestAutoFocus -= RequestAutoFocusHandler;
-                OnRequestTorch -= RequestTorchHandler;
-                OnRequestToggleTorch -= RequestToggleTorchHandler;
-                OnRequestCancel -= RequestCancelHandler;
-                OnRequestIsTorchOn -= RequestIsTorchOnHandler;*/
-
                 scannerControl.StopScanning();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -160,14 +64,6 @@ namespace Govision
                 //ScanningOptions.TryHarder = true;
                 scannerControl.ScanningOptions = ScanningOptions;
 
-                //OnRequest events handlers
-                /*OnRequestAutoFocus += RequestAutoFocusHandler;
-                OnRequestTorch += RequestTorchHandler;
-                OnRequestToggleTorch += RequestToggleTorchHandler;
-                OnRequestCancel += RequestCancelHandler;
-                OnRequestIsTorchOn += RequestIsTorchOnHandler;
-                OnRequestCanTorch += RequestCanTorchHandler;*/
-
                 //start the scanner
                 scannerControl.StartScanning(HandleResult, ScanningOptions);
 
@@ -189,8 +85,8 @@ namespace Govision
 
         void HandleResult(ZXing.Result result)
         {
-            //NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + result.Text, UriKind.Relative));
             MessageBox.Show(result.Text);
+            NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + result.Text, UriKind.Relative));
         }
 
         private void _flashButton(object sender, EventArgs e)
