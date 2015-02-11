@@ -25,12 +25,12 @@ namespace Govision
         {
             InitializeComponent();
 
+            //when app resume event
             PhoneApplicationService.Current.Activated += (s, e) =>
             {
                 scanner();
             };
         }
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -44,7 +44,7 @@ namespace Govision
             {
                 scannerControl.StopScanning();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { MessageBox.Show(ex.Message + "\n" + ex.HResult, "Error", MessageBoxButton.OK); }
 
             base.OnNavigatingFrom(e);
         }
@@ -80,12 +80,12 @@ namespace Govision
                     ApplicationBar.Buttons.Add(flashButton);
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error" +"\n" + ex.Message + "\n" + ex.HResult); }
+            catch (Exception ex) { MessageBox.Show(ex.Message + "\n" + ex.HResult, "Error", MessageBoxButton.OK); }
         }
 
         void HandleResult(ZXing.Result result)
         {
-            MessageBox.Show(result.Text);
+            MessageBox.Show(result.Text, "GV Tag Founded", MessageBoxButton.OK);
             NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + result.Text, UriKind.Relative));
         }
 

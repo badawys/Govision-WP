@@ -20,56 +20,92 @@ namespace Govision
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             var t = NavigationContext.QueryString["t"];
+            string apiVersion = "0"; //TODO: API Version check (API Version Changes)
+            string videoId = null;
 
-            //YouTube.CancelPlay(); // used to reenable page
+            YouTube.CancelPlay(); // used to re-enable page
 
-            try
+            if (NetworkInterface.GetIsNetworkAvailable())
             {
-                if (NetworkInterface.GetIsNetworkAvailable())
-                {
-                    System.Uri uri = new Uri("http://api.govision.co/v1/index.php?id=" + t);
+                System.Uri uri = new Uri("http://api.govision.co/v1/index.php?id=" + t);
 
+                try
+                { 
                     HttpClient httpClient = new HttpClient();
                     var response = await httpClient.GetAsync(uri);
                     string res = await response.Content.ReadAsStringAsync();
 
-                    string videoId = res;
-
-                    //Get The Video Uri and set it as a player source 
-                    var url = await YouTube.GetVideoUriAsync(videoId, YouTubeQuality.Quality360P);
-
-                    PhoneApplicationService.Current.State["videoURI"] = url.Uri;
-
-                    NavigationService.Navigate(new Uri("/video.xaml", UriKind.Relative));
-
-                }
-                else
+                    videoId = res; //TODO: Change to Result variable (API Version Changes)
+                } 
+                catch (Exception ex)
                 {
-                    MessageBox.Show("You're not connected to Internet!");
+                    MessageBox.Show("Couldn't connect to Govision servers\nTry again later\n\nERROR:" + ex.Message);
+                    
                     //Go back to the main page
                     NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
                     //Don't allow to navigate back to the scanner with the back button
                     NavigationService.RemoveBackEntry();
                 }
+
+                if (apiVersion == "0") //TODO: API Version check (API Version Changes)
+                {
+                    if (videoId != null)
+                    {
+                        YouTubeVideo(videoId);
+                    }
+                }
+                
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            else
+            {
+                MessageBox.Show("You're not connected to Internet!\nPlease check your Internet connection and tray again.");
+
+                //Go back to the main page
+                NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
+                //Don't allow to navigate back to the scanner with the back button
+                NavigationService.RemoveBackEntry();
+            }
+        }
+
+        private async void YouTubeVideo(string videoId)
+        {
+            try
+            {
+                //Get The Video Uri and set it as a player source 
+                var url = await YouTube.GetVideoUriAsync(videoId, YouTubeQuality.Quality360P);
+
+                PhoneApplicationService.Current.State["videoURI"] = url.Uri;
+
+                NavigationService.Navigate(new Uri("/video.xaml", UriKind.Relative));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Couldn't get YouTube video\n\nERROR:" + ex.Message);
+
+                //Go back to the main page
+                NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
+                //Don't allow to navigate back to the scanner with the back button
+                NavigationService.RemoveBackEntry();
+            } 
+        }
+
+        //TODO: Add GovisionVideo support 
+        private async void GovisionVideo(string path)
+        {
+
         }
 
         protected override void OnBackKeyPress(CancelEventArgs e)
         {
-            if (YouTube.CancelPlay()) // used to abort current youtube download
+            if (YouTube.CancelPlay()) // used to abort current you tube download
                 e.Cancel = true;
-            else
-            {
-                // your code here
-            }
-            base.OnBackKeyPress(e);
-
+            
             //Go back to the main page
             NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
             //Don't allow to navigate back to the scanner with the back button
             NavigationService.RemoveBackEntry();
-
+            
+            base.OnBackKeyPress(e);
         }
 
     }
