@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="28902AhmadElbadawy.GovisionBETA.Test" Publisher="CN=428D6475-DC5C-4EEC-BEDC-BF73B2929E49" Version="0.3.0.0" />
+  <Identity Name="28902AhmadElbadawy.GovisionBETA.Test" Publisher="CN=428D6475-DC5C-4EEC-BEDC-BF73B2929E49" Version="0.3.1.5" />
   <mp:PhoneIdentity PhoneProductId="f8fedef4-8b0b-41b3-b153-a03a56e29700" PhonePublisherId="4df2ebb5-3877-441b-8b41-8ee8d9a8d877" />
   <Properties>
     <DisplayName>Govision BETA</DisplayName>
