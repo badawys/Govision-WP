@@ -78,9 +78,13 @@ namespace ZXing.Mobile
         }
 
         public void StopScanning()
-        {           
-            _reader.Stop();
-			_reader = null;
+        {
+            if (_reader != null) 
+            { 
+                _reader.Stop();
+			    _reader = null;
+            }
+
         }
 
         public void Cancel()
