@@ -31,6 +31,7 @@
 
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="history*" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="settings" Click="SettingsButton_Click"/>
             </shell:ApplicationBar.MenuItems>
             
         </shell:ApplicationBar>

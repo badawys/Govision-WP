@@ -10,6 +10,8 @@ using Microsoft.Phone.Shell;
 using ZXing.Mobile;
 using ZXing;
 using System.ComponentModel;
+using System.IO.IsolatedStorage;
+using System.Windows.Media;
 
 namespace Govision
 {
@@ -34,6 +36,14 @@ namespace Govision
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var settings = IsolatedStorageSettings.ApplicationSettings;
+
+            if (settings.Contains("ThemeColor"))
+            {
+                ApplicationBar.BackgroundColor = ConvertStringToColor(settings["ThemeColor"].ToString());
+                SystemTray.BackgroundColor = ConvertStringToColor(settings["ThemeColor"].ToString());
+            }
+
             scanner();
             base.OnNavigatedTo(e);
         }
@@ -104,6 +114,38 @@ namespace Govision
         private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/History.xaml", UriKind.Relative));
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Settings.xaml", UriKind.Relative));
+        }
+
+        public Color ConvertStringToColor(String hex)
+        {
+
+            hex = hex.Replace("#", "");
+
+            byte a = 255;
+            byte r = 255;
+            byte g = 255;
+            byte b = 255;
+
+            int start = 0;
+
+            //handle ARGB strings (8 characters long) 
+            if (hex.Length == 8)
+            {
+                a = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                start = 2;
+            }
+
+            //convert RGB characters to bytes 
+            r = byte.Parse(hex.Substring(start, 2), System.Globalization.NumberStyles.HexNumber);
+            g = byte.Parse(hex.Substring(start + 2, 2), System.Globalization.NumberStyles.HexNumber);
+            b = byte.Parse(hex.Substring(start + 4, 2), System.Globalization.NumberStyles.HexNumber);
+
+            return Color.FromArgb(a, r, g, b);
         }
     }
 }
