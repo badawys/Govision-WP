@@ -18,6 +18,8 @@ namespace Govision
     public partial class start : PhoneApplicationPage
     {
 
+        IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+
         public static MobileBarcodeScanningOptions ScanningOptions = new MobileBarcodeScanningOptions();
         public static MobileBarcodeScannerBase Scanner;
         public static Result LastScanResult;
@@ -36,7 +38,6 @@ namespace Govision
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var settings = IsolatedStorageSettings.ApplicationSettings;
 
             if (settings.Contains("ThemeColor"))
             {
@@ -95,7 +96,11 @@ namespace Govision
 
         void HandleResult(ZXing.Result result)
         {
-            MessageBox.Show(result.Text, "GV Tag Founded", MessageBoxButton.OK);
+            if (settings["DebugMode"].ToString() == "true")
+            {
+                MessageBox.Show(result.Text, "GV Tag Founded", MessageBoxButton.OK);
+            }
+            
             NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + result.Text, UriKind.Relative));
         }
 

@@ -21,5 +21,10 @@ namespace Govision
         {
             NavigationService.Navigate(new Uri("/AppSettings/Theme.xaml", UriKind.Relative));
         }
+
+        private void DebugModeButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AppSettings/DebugMode.xaml", UriKind.Relative));
+        }
     }
 }
