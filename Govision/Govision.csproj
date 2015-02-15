@@ -104,8 +104,12 @@
     <Compile Include="AppSettings\Theme.xaml.cs">
       <DependentUpon>Theme.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bitmap.cs" />
     <Compile Include="DataBeacon.xaml.cs">
       <DependentUpon>DataBeacon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DemoMode.xaml.cs">
+      <DependentUpon>DemoMode.xaml</DependentUpon>
     </Compile>
     <Compile Include="History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
@@ -157,6 +161,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DemoMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\AppBar\transport.play.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -205,6 +214,11 @@
     <Content Include="Assets\SquareTile150x150.png" />
     <Content Include="Assets\SquareTile71x71.png" />
     <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\tags\1.png" />
+    <Content Include="Assets\tags\2.png" />
+    <Content Include="Assets\tags\3.png" />
+    <Content Include="Assets\tags\4.png" />
+    <Content Include="Assets\tags\5.png" />
     <Content Include="Assets\Text.png" />
     <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
