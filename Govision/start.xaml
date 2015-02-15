@@ -30,7 +30,8 @@
             <shell:ApplicationBarIconButton x:Name="buttonFlash" Click="_flashButton" IconUri="/Assets/icons/appbar.camera.flash.png" Text="Flash"/>
 
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="history*" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="history" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="settings" Click="SettingsButton_Click"/>
             </shell:ApplicationBar.MenuItems>
             
         </shell:ApplicationBar>

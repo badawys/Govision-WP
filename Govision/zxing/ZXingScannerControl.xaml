@@ -33,7 +33,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Image Grid.Row="1" Source="../Assets/Center_Mark.png" Width="232" Height="232" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.6"/>
-            <Rectangle>
+            
+            <Rectangle x:Name="header">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Orange" Offset="0"/>
