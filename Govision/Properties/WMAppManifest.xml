@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{f8fedef4-8b0b-41b3-b153-a03a56e29700}" Title="Govision R&amp;D" RuntimeType="Silverlight" Version="0.3.1.5" Genre="apps.normal" Author="Gomention" Description="Govision BETA for windows phone" SDOptOut="false" BackUpOptOut="false" Publisher="Gomention" PublisherID="{4df2ebb5-3877-441b-8b41-8ee8d9a8d877}">
+  <App xmlns="" ProductID="{f8fedef4-8b0b-41b3-b153-a03a56e29700}" Title="Govision BETA" RuntimeType="Silverlight" Version="0.4.1.0" Genre="apps.normal" Author="Gomention" Description="Govision BETA for windows phone" SDOptOut="false" BackUpOptOut="false" Publisher="Gomention" PublisherID="{4df2ebb5-3877-441b-8b41-8ee8d9a8d877}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_ISV_CAMERA" />
