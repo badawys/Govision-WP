@@ -1,4 +1,6 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Govision.database;
+using Govision.Model;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyToolkit.Multimedia;
 using System;
@@ -73,6 +75,24 @@ namespace Govision
             {
                 //Get The Video Uri and set it as a player source 
                 var url = await YouTube.GetVideoUriAsync(videoId, YouTubeQuality.Quality360P);
+                string VideoTitle = await YouTube.GetVideoTitleAsync(videoId);
+
+                HistoryDatabase history = new HistoryDatabase();
+                HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
+
+                int lastId;
+
+                if (HistoryListItems.Count != 0)
+                {
+                    lastId = HistoryListItems[HistoryListItems.Count - 1].Id;
+                }
+                else
+                {
+                    lastId = 0;
+                }
+                
+
+                history.AddItem(new HistoryData() { Id = lastId + 1 ,Title = VideoTitle, Image = "Assets/Video.png", Tag_Type = "Video", Tag_id = NavigationContext.QueryString["t"] });
 
                 PhoneApplicationService.Current.State["videoURI"] = url.Uri;
 
