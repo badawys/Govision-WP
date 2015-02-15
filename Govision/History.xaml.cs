@@ -44,7 +44,7 @@ namespace Govision
 
             IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
 
-            if (settings["DebugMode"].ToString() == "true")
+            if (settings.Contains("DebugMode") && settings["DebugMode"].ToString() == "true")
             {
                 MessageBox.Show("Your selected Tag's id is:" + SelectedItem.Tag_id.ToString());
             }

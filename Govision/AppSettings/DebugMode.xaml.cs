@@ -21,9 +21,9 @@ namespace Govision.AppSettings
         {
             InitializeComponent();
 
-            if (settings["DebugMode"].ToString() == "true")
+            if (settings.Contains("DebugMode") && settings["DebugMode"].ToString() == "true")
             {
-                debugSwitch.Content = "On";
+                debugSwitch.Content = "on";
                 debugSwitch.IsChecked = true;
             }
 
