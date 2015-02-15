@@ -80,17 +80,11 @@ namespace Govision
                 HistoryDatabase history = new HistoryDatabase();
                 HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
 
-                int lastId;
+                int lastId = 0; //Set the list id to 0
 
-                if (HistoryListItems.Count != 0)
-                {
-                    lastId = HistoryListItems[HistoryListItems.Count - 1].Id;
-                }
-                else
-                {
-                    lastId = 0;
-                }
-                
+                if (HistoryListItems.Count > 0)
+                    lastId = HistoryListItems[0].Id; //Last item id is the id of the first item of the list
+               
 
                 history.AddItem(new HistoryData() { Id = lastId + 1 ,Title = VideoTitle, Image = "Assets/Video.png", Tag_Type = "Video", Tag_id = NavigationContext.QueryString["t"] });
 

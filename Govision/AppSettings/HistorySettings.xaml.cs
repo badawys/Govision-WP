@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Govision.database;
+using Govision.Model;
+using Microsoft.Phone.Controls;
+using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System.IO.IsolatedStorage;
-using Govision.database;
-using Govision.Model;
 
 namespace Govision.AppSettings
 {
@@ -18,7 +14,10 @@ namespace Govision.AppSettings
         public HistorySettings()
         {
             InitializeComponent();
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
             //Get the history list from the data base
             HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
 
@@ -65,6 +64,7 @@ namespace Govision.AppSettings
                 if (mbr == MessageBoxResult.OK)
                 {
                     IsolatedStorage.DeleteFile("HistoryDB");
+                    this.HistoryList.DataContext = new HistoryDatabase().GetHistoryList();; //Update the list view
                 }
             } 
             else

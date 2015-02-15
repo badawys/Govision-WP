@@ -32,10 +32,12 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
             <StackPanel Grid.Row="0">
                 <Button Click="Delete_Click">Delete all my history</Button>
             </StackPanel>
-            <ListBox Margin="0,20,0,0" SelectionChanged="HistoryList_SelectionChanged" Grid.Row="1" x:Name="HistoryList" ItemsSource="{Binding}">
+
+            <ListBox Grid.Row="1" x:Name="HistoryList" SelectionChanged="HistoryList_SelectionChanged" ItemsSource="{Binding}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -43,7 +45,9 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
+
                             <Image Source="{Binding Image}" Grid.Column="0" Margin="5,5,5,7"/>
+
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Margin="7,0,0,0">
                                 <TextBlock Text="{Binding Title}" FontSize="23"/>
                                 <TextBlock Text="{Binding Tag_Type}" FontSize="16" Margin="0,4,0,0"/>
@@ -53,6 +57,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
         </Grid>
     </Grid>
 

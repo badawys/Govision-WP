@@ -122,9 +122,7 @@ namespace ZXing.Mobile
 
 		private void Initialize()
 		{
-            //ScanOnAutoFocus = true; // scanOnAutoFocus;
-
-			// Gets the Dispatcher for the current application so we can invoke the UI-Thread to get
+            // Gets the Dispatcher for the current application so we can invoke the UI-Thread to get
 			// preview-image and fire our timer events
 			uiDispatcher = Application.Current.RootVisual.Dispatcher;
 
@@ -132,6 +130,7 @@ namespace ZXing.Mobile
 
 			
             _reader = this.Options.BuildMultiFormatReader();
+
 		}
 
 		private void InitializeCamera()
@@ -223,19 +222,27 @@ namespace ZXing.Mobile
 
 		private void OnPhotoCameraInitialized(object sender, CameraOperationCompletedEventArgs e)
 		{
-            if (_photoCamera == null)
-                return;
+            try
+            {
+                if (_photoCamera == null)
+                    return;
 
-			var width = Convert.ToInt32(_photoCamera.PreviewResolution.Width);
-			var height = Convert.ToInt32(_photoCamera.PreviewResolution.Height);
+                var width = Convert.ToInt32(_photoCamera.PreviewResolution.Width);
+                var height = Convert.ToInt32(_photoCamera.PreviewResolution.Height);
 
-			_luminance = new PhotoCameraLuminanceSource(width, height);
+                _luminance = new PhotoCameraLuminanceSource(width, height);
 
-			_photoCamera.FlashMode = FlashMode.Off;
+                _photoCamera.FlashMode = FlashMode.Off;
 
-			_initialized = true;
+                _initialized = true;
 
-			OnCameraInitialized(_initialized);
+                OnCameraInitialized(_initialized);
+            }
+            catch
+            {
+                InitializeCamera(); //Re-Initialize Camera
+            }
+            
 		}
 
 		private void ScanPreviewBuffer()
