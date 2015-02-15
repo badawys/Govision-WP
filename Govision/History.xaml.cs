@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using Govision.database;
+using Govision.Model;
+using Microsoft.Phone.Controls;
+using System;
+using System.ComponentModel;
+using System.IO.IsolatedStorage;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using Govision.Model;
-using System.ComponentModel;
-using Govision.database;
-using System.IO.IsolatedStorage;
 
 namespace Govision
 {

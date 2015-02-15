@@ -13,8 +13,8 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True"
-    shell:SystemTray.BackgroundColor="Orange"
-    shell:SystemTray.ForegroundColor="White">
+    shell:SystemTray.ForegroundColor="White"
+    shell:SystemTray.BackgroundColor="Orange">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
