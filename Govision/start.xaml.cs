@@ -96,7 +96,7 @@ namespace Govision
 
         void HandleResult(ZXing.Result result)
         {
-            if (settings["DebugMode"].ToString() == "true")
+            if (settings.Contains("DebugMode") && settings["DebugMode"].ToString() == "true")
             {
                 MessageBox.Show(result.Text, "GV Tag Founded", MessageBoxButton.OK);
             }
