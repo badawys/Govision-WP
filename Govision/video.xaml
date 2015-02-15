@@ -12,30 +12,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Landscape"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="False"
-    shell:SystemTray.BackgroundColor="White"
-    shell:SystemTray.ForegroundColor="Orange">
+    shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid>
-        <Grid x:Name="loading" Visibility="Collapsed" Canvas.ZIndex="9999" Background="White" HorizontalAlignment="Stretch">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <ProgressBar Grid.Row="1" IsIndeterminate="True"/>
-            <TextBlock Grid.Row="2" Text="Lodaing..." FontSize="17" Foreground="White" HorizontalAlignment="Center"/>
+        <Grid x:Name="LayoutRoot">
+            <mmppf:MediaPlayer x:Name="player" AutoPlay="True" IsSignalStrengthVisible="True" />
         </Grid>
-        <Grid x:Name="LayoutRoot" Background="White">
-            <mmppf:MediaPlayer x:Name="player" AutoPlay="True"/>
-        </Grid>
-        <!--<Grid>
-            <MediaElement x:Name="player" AutoPlay="True"/>
-        </Grid>-->
     </Grid>
 
 </phone:PhoneApplicationPage>

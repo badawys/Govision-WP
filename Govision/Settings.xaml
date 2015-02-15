@@ -30,27 +30,14 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <Button Click="AppThemeButton">App Theme</Button>
-                <Button>History*</Button>
-                <Button>My Account*</Button>
-                <Button>Backup and Restore*</Button>
-                <Button Click="DebugModeButton">Debug Mode**</Button> 
+                <Button Click="HistoryButton">History</Button>
+                <Button Click="DebugModeButton">Debug Mode</Button>
             </StackPanel>
-            
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,12,30">
-                <TextBlock HorizontalAlignment="left" Foreground="Red">
-                    * Preview 
-                    <LineBreak/>
-                    ** For Development only
-                </TextBlock>
-                <TextBlock TextWrapping="Wrap" HorizontalAlignment="left" Foreground="Green" FontSize="14">
-                   This page is part of User Experience development project by Research and Development Department
-                    <LineBreak/>
-                    For any questions or suggestions please send it to this mail:
-                    <LineBreak/>
-                    samar@govision.co
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock Margin="15,0,0,15" HorizontalAlignment="left" FontSize="17" Foreground="Red" TextWrapping="Wrap">
+                    Note: Debug Mode is available on Govision internel beta builds only.
                 </TextBlock>
             </StackPanel>
-
         </Grid>
     </Grid>
 

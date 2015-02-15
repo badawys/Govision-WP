@@ -98,6 +98,9 @@
     <Compile Include="AppSettings\DebugMode.xaml.cs">
       <DependentUpon>DebugMode.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppSettings\HistorySettings.xaml.cs">
+      <DependentUpon>HistorySettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppSettings\Theme.xaml.cs">
       <DependentUpon>Theme.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,7 @@
     <Compile Include="History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>
+    <Compile Include="History\HistoryDatabase.cs" />
     <Compile Include="Model\HistoryData.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -138,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="AppSettings\DebugMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppSettings\HistorySettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

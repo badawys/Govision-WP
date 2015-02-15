@@ -26,5 +26,10 @@ namespace Govision
         {
             NavigationService.Navigate(new Uri("/AppSettings/DebugMode.xaml", UriKind.Relative));
         }
+
+        private void HistoryButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AppSettings/HistorySettings.xaml", UriKind.Relative));
+        }
     }
 }
