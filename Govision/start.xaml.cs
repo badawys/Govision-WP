@@ -126,6 +126,11 @@ namespace Govision
             NavigationService.Navigate(new Uri("/Settings.xaml", UriKind.Relative));
         }
 
+        private void DemoMode_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DemoMode.xaml", UriKind.Relative));
+        }
+
         public Color ConvertStringToColor(String hex)
         {
 
