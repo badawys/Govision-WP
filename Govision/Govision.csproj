@@ -92,6 +92,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="album.xaml.cs">
+      <DependentUpon>album.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -104,7 +107,6 @@
     <Compile Include="AppSettings\Theme.xaml.cs">
       <DependentUpon>Theme.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Bitmap.cs" />
     <Compile Include="DataBeacon.xaml.cs">
       <DependentUpon>DataBeacon.xaml</DependentUpon>
     </Compile>
@@ -115,6 +117,7 @@
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>
     <Compile Include="History\HistoryDatabase.cs" />
+    <Compile Include="Model\AlbumData.cs" />
     <Compile Include="Model\HistoryData.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -145,6 +148,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="album.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AppSettings\DebugMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +199,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Govision_2015_02_16_04_49_11.sap" />
+    <None Include="Govision_2015_02_16_04_51_58.sap" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">

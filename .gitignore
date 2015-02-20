@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.sap
 
 # Build results
 [Dd]ebug/

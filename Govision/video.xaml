@@ -16,7 +16,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid>
-        <Grid x:Name="LayoutRoot">
+        <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
             <mmppf:MediaPlayer x:Name="player" AutoPlay="True" IsSignalStrengthVisible="True" />
         </Grid>
     </Grid>

@@ -19,6 +19,10 @@ namespace Govision
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
+            NavigationService.RemoveBackEntry();
+
             //Get the history list from the data base
             HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
 

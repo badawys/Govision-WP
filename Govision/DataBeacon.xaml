@@ -14,7 +14,7 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="loading" Visibility="Visible">
+    <Grid x:Name="loading" Visibility="Visible" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" />
             <RowDefinition Height="1*" />

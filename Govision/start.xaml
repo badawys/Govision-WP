@@ -17,7 +17,7 @@
     shell:SystemTray.BackgroundColor="Orange">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <zxing:ZXingScannerControl Name="scannerControl">
 
         </zxing:ZXingScannerControl>
@@ -33,6 +33,7 @@
                 <shell:ApplicationBarMenuItem Text="demo mode" Click="DemoMode_Click"/>
                 <shell:ApplicationBarMenuItem Text="history" Click="ApplicationBarMenuItem_Click"/>
                 <shell:ApplicationBarMenuItem Text="settings" Click="SettingsButton_Click"/>
+                <shell:ApplicationBarMenuItem Text="album" Click="AlbumButton_Click"/>
             </shell:ApplicationBar.MenuItems>
             
         </shell:ApplicationBar>

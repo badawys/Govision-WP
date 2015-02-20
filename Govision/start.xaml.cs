@@ -28,12 +28,6 @@ namespace Govision
         public start()
         {
             InitializeComponent();
-
-            //when app resume event
-            PhoneApplicationService.Current.Activated += (s, e) =>
-            {
-                scanner();
-            };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -46,18 +40,16 @@ namespace Govision
             }
 
             scanner();
-            base.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
+        {    
             try
             {
+                scannerControl.Scanner = null;
                 scannerControl.StopScanning();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + "\n" + ex.HResult, "Error", MessageBoxButton.OK); }
-
-            base.OnNavigatingFrom(e);
         }
 
         private void scanner()
@@ -67,12 +59,9 @@ namespace Govision
                 //set scanner options (Set PossibleFormats to QR_CODE)
                 ScanningOptions.PossibleFormats = new List<ZXing.BarcodeFormat>() { 
                     ZXing.BarcodeFormat.QR_CODE
-                    //ZXing.BarcodeFormat.AZTEC,
-                    //ZXing.BarcodeFormat.DATA_MATRIX,
                 };
 
                 ScanningOptions.AutoRotate = true;
-                //ScanningOptions.TryHarder = true;
                 scannerControl.ScanningOptions = ScanningOptions;
 
                 //start the scanner
@@ -129,6 +118,11 @@ namespace Govision
         private void DemoMode_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/DemoMode.xaml", UriKind.Relative));
+        }
+
+        private void AlbumButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/album.xaml", UriKind.Relative));
         }
 
         public Color ConvertStringToColor(String hex)

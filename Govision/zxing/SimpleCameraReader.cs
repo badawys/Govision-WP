@@ -44,6 +44,9 @@ namespace ZXing.Mobile
 
 		private Dispatcher uiDispatcher;
 
+        BinaryBitmap binBitmap;
+        ZXing.Common.HybridBinarizer binarizer;
+
 		//private System.Threading.CancellationTokenSource cancelTokenSource = new System.Threading.CancellationTokenSource();
 
 		/// <summary>
@@ -210,9 +213,18 @@ namespace ZXing.Mobile
 			if (_photoCamera != null)
 			{
                 _photoCamera.Initialized -= OnPhotoCameraInitialized;
-				_photoCamera.Dispose();
+				//_photoCamera.Dispose();
 				_photoCamera = null;
-			}
+
+                _surface = null;
+
+                _luminance = null;
+
+                uiDispatcher = null;
+
+                binarizer = null;
+                binBitmap = null;
+            }
 		}
 
 		public void ShutterHalfPressed()
@@ -245,6 +257,7 @@ namespace ZXing.Mobile
             
 		}
 
+
 		private void ScanPreviewBuffer()
 		{
 			if (_photoCamera == null) return;
@@ -253,9 +266,9 @@ namespace ZXing.Mobile
 			try
 			{
 				_photoCamera.GetPreviewBufferY(_luminance.PreviewBufferY);
-				var binarizer = new ZXing.Common.HybridBinarizer(_luminance);
+				binarizer = new ZXing.Common.HybridBinarizer(_luminance);
 
-				var binBitmap = new BinaryBitmap(binarizer);
+				binBitmap = new BinaryBitmap(binarizer);
 
 				var result = _reader.decode(binBitmap);
 
