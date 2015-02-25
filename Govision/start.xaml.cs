@@ -35,8 +35,8 @@ namespace Govision
 
             if (settings.Contains("ThemeColor"))
             {
-                ApplicationBar.BackgroundColor = ConvertStringToColor(settings["ThemeColor"].ToString());
-                SystemTray.BackgroundColor = ConvertStringToColor(settings["ThemeColor"].ToString());
+                ApplicationBar.BackgroundColor = (Color)settings["ThemeColor"];
+                SystemTray.BackgroundColor = (Color)settings["ThemeColor"];
             }
 
             scanner();
@@ -118,11 +118,6 @@ namespace Govision
         private void DemoMode_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/DemoMode.xaml", UriKind.Relative));
-        }
-
-        private void AlbumButton_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/album.xaml", UriKind.Relative));
         }
 
         public Color ConvertStringToColor(String hex)

@@ -35,12 +35,11 @@
             <phone:Pivot x:Name="albumView" ItemsSource="{Binding}">
                 <phone:Pivot.HeaderTemplate>
                     <DataTemplate>
-                        
                     </DataTemplate>
                 </phone:Pivot.HeaderTemplate>
                 <phone:Pivot.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding src}" />
+                        <Image Source="{Binding src}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </DataTemplate>
                 </phone:Pivot.ItemTemplate>
             </phone:Pivot>

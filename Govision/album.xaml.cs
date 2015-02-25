@@ -23,11 +23,15 @@ namespace Govision
         {
             AlbumPhotosList AlbumPhotosListItems = new AlbumPhotosList();
 
-            AlbumPhotosListItems.Add(new AlbumData { src= "Assets/tags/1.png" });
-            AlbumPhotosListItems.Add(new AlbumData { src = "Assets/tags/2.png" });
-            AlbumPhotosListItems.Add(new AlbumData { src = "Assets/tags/3.png" });
-            AlbumPhotosListItems.Add(new AlbumData { src = "Assets/tags/4.png" });
-            AlbumPhotosListItems.Add(new AlbumData { src = "Assets/tags/5.png" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "1", src= "Assets/Album/1.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "2", src = "Assets/Album/2.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "3", src = "Assets/Album/3.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "4", src = "Assets/Album/4.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "5", src = "Assets/Album/5.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "6", src = "Assets/Album/6.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "7", src = "Assets/Album/7.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "8", src = "Assets/Album/8.jpg", total = "9" });
+            AlbumPhotosListItems.Add(new AlbumData { id = "9", src = "Assets/Album/9.jpg", total = "9" });
 
             this.albumView.DataContext = AlbumPhotosListItems;
         }

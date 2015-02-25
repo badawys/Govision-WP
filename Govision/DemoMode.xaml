@@ -54,11 +54,11 @@
             <shell:ApplicationBarIconButton x:Name="buttonStart" Click="_StartButton" IconUri="/Assets/AppBar/transport.play.png" Text="Start"/>
            
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Use Tag 1" Click="Tag1_Click"/>
-                <shell:ApplicationBarMenuItem Text="Use Tag 2" Click="Tag2_Click"/>
-                <shell:ApplicationBarMenuItem Text="Use Tag 3" Click="Tag3_Click"/>
-                <shell:ApplicationBarMenuItem Text="Use Tag 4" Click="Tag4_Click"/>
-                <shell:ApplicationBarMenuItem Text="Use Tag 5" Click="Tag5_Click"/>               
+                <shell:ApplicationBarMenuItem Text="Video Tag 1" Click="Tag1_Click"/>
+                <shell:ApplicationBarMenuItem Text="Video Tag 2" Click="Tag2_Click"/>
+                <shell:ApplicationBarMenuItem Text="Video Tag 3" Click="Tag3_Click"/>
+                <shell:ApplicationBarMenuItem Text="Video Tag 4" Click="Tag4_Click"/>
+                <shell:ApplicationBarMenuItem Text="Album Tag 1" Click="Tag5_Click"/>               
             </shell:ApplicationBar.MenuItems>
 
         </shell:ApplicationBar>

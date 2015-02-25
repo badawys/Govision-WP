@@ -77,7 +77,7 @@ namespace Govision
 
         private void Tag5_Click(object sender, EventArgs e)
         {
-            tagImage.Source = new BitmapImage(new Uri("Assets/tags/5.png", UriKind.Relative));
+            tagImage.Source = new BitmapImage(new Uri("Assets/tags/6.png", UriKind.Relative));
         }
     }
 }

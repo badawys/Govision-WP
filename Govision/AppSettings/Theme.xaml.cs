@@ -22,38 +22,12 @@ namespace Govision.AppSettings
 
             if (settings.Contains("ThemeColor"))
             {
-                picker.Color = ConvertStringToColor(settings["ThemeColor"].ToString());
-                ColorRect.Fill = new SolidColorBrush(ConvertStringToColor(settings["ThemeColor"].ToString()));
-                ColorRect2.Fill = new SolidColorBrush(ConvertStringToColor(settings["ThemeColor"].ToString()));
+                picker.Color = (Color)settings["ThemeColor"];
+                ColorRect.Fill = new SolidColorBrush((Color)settings["ThemeColor"]);
+                ColorRect2.Fill = new SolidColorBrush((Color)settings["ThemeColor"]);
             }
         }
 
-        public Color ConvertStringToColor(String hex)
-        {
-
-            hex = hex.Replace("#", "");
-
-            byte a = 255;
-            byte r = 255;
-            byte g = 255;
-            byte b = 255;
-
-            int start = 0;
-
-            //handle ARGB strings (8 characters long) 
-            if (hex.Length == 8)
-            {
-                a = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                start = 2;
-            }
-
-            //convert RGB characters to bytes 
-            r = byte.Parse(hex.Substring(start, 2), System.Globalization.NumberStyles.HexNumber);
-            g = byte.Parse(hex.Substring(start + 2, 2), System.Globalization.NumberStyles.HexNumber);
-            b = byte.Parse(hex.Substring(start + 4, 2), System.Globalization.NumberStyles.HexNumber);
-
-            return Color.FromArgb(a, r, g, b);
-        }
 
         private void picker_ColorChanged(object sender, System.Windows.Media.Color color)
         {
@@ -65,11 +39,11 @@ namespace Govision.AppSettings
         {
             if (!settings.Contains("ThemeColor"))
             {
-                settings.Add("ThemeColor", ((SolidColorBrush)ColorRect.Fill).Color.ToString());
+                settings.Add("ThemeColor", ((SolidColorBrush)ColorRect.Fill).Color);
             }
             else
             {
-                settings["ThemeColor"] = ((SolidColorBrush)ColorRect.Fill).Color.ToString();
+                settings["ThemeColor"] = ((SolidColorBrush)ColorRect.Fill).Color;
             }
 
             settings.Save();

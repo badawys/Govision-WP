@@ -29,9 +29,9 @@ namespace Govision
         protected override void OnBackKeyPress(CancelEventArgs e)
         {
             //Go back to the main page
-            NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
             //Don't allow to navigate back to the scanner with the back button
-            NavigationService.RemoveBackEntry();
+            //NavigationService.RemoveBackEntry();
             
         }
     }

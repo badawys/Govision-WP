@@ -33,7 +33,6 @@
                 <shell:ApplicationBarMenuItem Text="demo mode" Click="DemoMode_Click"/>
                 <shell:ApplicationBarMenuItem Text="history" Click="ApplicationBarMenuItem_Click"/>
                 <shell:ApplicationBarMenuItem Text="settings" Click="SettingsButton_Click"/>
-                <shell:ApplicationBarMenuItem Text="album" Click="AlbumButton_Click"/>
             </shell:ApplicationBar.MenuItems>
             
         </shell:ApplicationBar>

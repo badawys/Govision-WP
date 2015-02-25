@@ -9,6 +9,8 @@ namespace Govision.Model
     public class AlbumData
     {
         public string src { get; set; }
+        public string id { get; set; }
+        public string total { get; set; }
     }
 
     public class AlbumPhotosList : List<AlbumData>

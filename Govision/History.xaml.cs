@@ -21,22 +21,12 @@ namespace Govision
         {
             base.OnNavigatedTo(e);
 
-            NavigationService.RemoveBackEntry();
-
             //Get the history list from the data base
             HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
 
             this.HistoryList.DataContext = HistoryListItems;
         }
 
-        protected override void OnBackKeyPress(CancelEventArgs e)
-        {           
-            //Go back to the main page
-            NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
-            //Don't allow to navigate back to the scanner with the back button
-            NavigationService.RemoveBackEntry();
-
-        }
 
         private void HistoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -49,7 +39,8 @@ namespace Govision
                 MessageBox.Show("Your selected Tag's id is:" + SelectedItem.Tag_id.ToString());
             }
 
-            NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + SelectedItem.Tag_id.ToString(), UriKind.Relative));
+            if (SelectedItem != null)
+                NavigationService.Navigate(new Uri("/DataBeacon.xaml?t=" + SelectedItem.Tag_id.ToString(), UriKind.Relative));
         }
 
     }

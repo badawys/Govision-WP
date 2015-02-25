@@ -199,8 +199,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Govision_2015_02_16_04_49_11.sap" />
-    <None Include="Govision_2015_02_16_04_51_58.sap" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -208,6 +206,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Album\1.jpg" />
+    <Content Include="Assets\Album\2.jpg" />
+    <Content Include="Assets\Album\3.jpg" />
+    <Content Include="Assets\Album\4.JPG" />
+    <Content Include="Assets\Album\5.jpg" />
+    <Content Include="Assets\Album\6.jpg" />
+    <Content Include="Assets\Album\7.jpg" />
+    <Content Include="Assets\Album\8.jpg" />
+    <Content Include="Assets\Album\9.jpg" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\AppBar\transport.play.png" />
     <Content Include="Assets\ApplicationIcon.png">
@@ -228,6 +235,7 @@
     <Content Include="Assets\tags\3.png" />
     <Content Include="Assets\tags\4.png" />
     <Content Include="Assets\tags\5.png" />
+    <Content Include="Assets\tags\6.png" />
     <Content Include="Assets\Text.png" />
     <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -289,6 +297,7 @@
       <Name>Microsoft Player Framework</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

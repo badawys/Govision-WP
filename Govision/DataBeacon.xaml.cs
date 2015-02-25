@@ -22,51 +22,72 @@ namespace Govision
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             var t = NavigationContext.QueryString["t"];
-            string apiVersion = "0"; //TODO: API Version check (API Version Changes)
-            string videoId = null;
 
-            YouTube.CancelPlay(); // used to re-enable page
-
-            if (NetworkInterface.GetIsNetworkAvailable())
+            if (t == "123456789123456") //check for Album preview tag first
             {
-                System.Uri uri = new Uri("http://api.govision.co/v1/index.php?id=" + t);
+                HistoryDatabase history = new HistoryDatabase();
+                HistoryList HistoryListItems = new HistoryDatabase().GetHistoryList();
 
-                try
-                { 
-                    HttpClient httpClient = new HttpClient();
-                    var response = await httpClient.GetAsync(uri);
-                    string res = await response.Content.ReadAsStringAsync();
+                int lastId = 0; //Set the list id to 0
 
-                    videoId = res; //TODO: Change to Result variable (API Version Changes)
-                } 
-                catch (Exception ex)
+                if (HistoryListItems.Count > 0)
+                    lastId = HistoryListItems[0].Id; //Last item id is the id of the first item of the list
+
+                history.AddItem(new HistoryData() { Id = lastId + 1, Title = "Despicable Me", Image = "Assets/Gallery.png", Tag_Type = "Gallery", Tag_id = NavigationContext.QueryString["t"] });
+
+                //Go back to the main page
+                NavigationService.Navigate(new Uri("/album.xaml", UriKind.Relative));
+                //Don't allow to navigate back to the scanner with the back button
+                NavigationService.RemoveBackEntry();
+            }
+            else
+            {
+                string apiVersion = "0"; //TODO: API Version check (API Version Changes)
+                string videoId = null;
+
+                YouTube.CancelPlay(); // used to re-enable page
+
+                if (NetworkInterface.GetIsNetworkAvailable())
                 {
-                    MessageBox.Show("Couldn't connect to Govision servers\nTry again later\n\nERROR:" + ex.Message);
-                    
+                    System.Uri uri = new Uri("http://api.govision.co/v1/index.php?id=" + t);
+
+                    try
+                    {
+                        HttpClient httpClient = new HttpClient();
+                        var response = await httpClient.GetAsync(uri);
+                        string res = await response.Content.ReadAsStringAsync();
+
+                        videoId = res; //TODO: Change to Result variable (API Version Changes)
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Couldn't connect to Govision servers\nTry again later\n\nERROR:" + ex.Message);
+
+                        //Go back to the main page
+                        NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
+                        //Don't allow to navigate back to the scanner with the back button
+                        NavigationService.RemoveBackEntry();
+                    }
+
+                    if (apiVersion == "0") //TODO: API Version check (API Version Changes)
+                    {
+                        if (videoId != null)
+                        {
+                            YouTubeVideo(videoId);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("You're not connected to Internet!\nPlease check your Internet connection and tray again.");
+
                     //Go back to the main page
                     NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
                     //Don't allow to navigate back to the scanner with the back button
                     NavigationService.RemoveBackEntry();
                 }
-
-                if (apiVersion == "0") //TODO: API Version check (API Version Changes)
-                {
-                    if (videoId != null)
-                    {
-                        YouTubeVideo(videoId);
-                    }
-                }
-                
-            }
-            else
-            {
-                MessageBox.Show("You're not connected to Internet!\nPlease check your Internet connection and tray again.");
-
-                //Go back to the main page
-                NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
-                //Don't allow to navigate back to the scanner with the back button
-                NavigationService.RemoveBackEntry();
-            }
+            }        
         }
 
         private async void YouTubeVideo(string videoId)
@@ -91,6 +112,8 @@ namespace Govision
                 PhoneApplicationService.Current.State["videoURI"] = url.Uri;
 
                 NavigationService.Navigate(new Uri("/video.xaml", UriKind.Relative));
+                //Don't allow to navigate back to the data beacon page with the back button
+                NavigationService.RemoveBackEntry();
             }
             catch (Exception ex)
             {
@@ -115,9 +138,11 @@ namespace Govision
                 e.Cancel = true;
             
             //Go back to the main page
-            NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/start.xaml", UriKind.Relative));
             //Don't allow to navigate back to the scanner with the back button
-            NavigationService.RemoveBackEntry();
+            //NavigationService.RemoveBackEntry();
+
+            NavigationService.GoBack();
             
             base.OnBackKeyPress(e);
         }
